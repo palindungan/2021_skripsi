@@ -1,0 +1,496 @@
+{
+	"_type": "Project",
+	"_id": "AAAAAAFF+h6SjaM2Hec=",
+	"name": "Untitled",
+	"ownedElements": [
+		{
+			"_type": "UMLModel",
+			"_id": "AAAAAAFF+qBWK6M3Z8Y=",
+			"_parent": {
+				"$ref": "AAAAAAFF+h6SjaM2Hec="
+			},
+			"name": "Model",
+			"ownedElements": [
+				{
+					"_type": "UMLClassDiagram",
+					"_id": "AAAAAAFF+qBtyKM79qY=",
+					"_parent": {
+						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
+					},
+					"name": "Main",
+					"defaultDiagram": true
+				}
+			]
+		},
+		{
+			"_type": "FCFlowchart",
+			"_id": "AAAAAAFytxI9gAAawbs=",
+			"_parent": {
+				"$ref": "AAAAAAFF+h6SjaM2Hec="
+			},
+			"name": "Flowchart1",
+			"ownedElements": [
+				{
+					"_type": "FCFlowchartDiagram",
+					"_id": "AAAAAAFytxI9gAAbQL0=",
+					"_parent": {
+						"$ref": "AAAAAAFytxI9gAAawbs="
+					},
+					"name": "FlowchartDiagram1",
+					"ownedViews": [
+						{
+							"_type": "FCProcessView",
+							"_id": "AAAAAAFytxJa5QAh1is=",
+							"_parent": {
+								"$ref": "AAAAAAFytxI9gAAbQL0="
+							},
+							"model": {
+								"$ref": "AAAAAAFytxJa5AAffsU="
+							},
+							"subViews": [
+								{
+									"_type": "LabelView",
+									"_id": "AAAAAAFytxJa5QAibsQ=",
+									"_parent": {
+										"$ref": "AAAAAAFytxJa5QAh1is="
+									},
+									"font": "Arial;15;0",
+									"left": 306,
+									"top": 82,
+									"width": 69,
+									"height": 30,
+									"text": "Studi Literature",
+									"wordWrap": true
+								}
+							],
+							"font": "Arial;15;0",
+							"left": 296,
+							"top": 72,
+							"width": 89,
+							"height": 50,
+							"nameLabel": {
+								"$ref": "AAAAAAFytxJa5QAibsQ="
+							}
+						},
+						{
+							"_type": "FCProcessView",
+							"_id": "AAAAAAFytxJnIwApq3M=",
+							"_parent": {
+								"$ref": "AAAAAAFytxI9gAAbQL0="
+							},
+							"model": {
+								"$ref": "AAAAAAFytxJnIwAnR2s="
+							},
+							"subViews": [
+								{
+									"_type": "LabelView",
+									"_id": "AAAAAAFytxJnJAAqbA8=",
+									"_parent": {
+										"$ref": "AAAAAAFytxJnIwApq3M="
+									},
+									"font": "Arial;15;0",
+									"left": 210,
+									"top": 162,
+									"width": 261,
+									"height": 15,
+									"text": "Pengumpulan Data",
+									"wordWrap": true
+								}
+							],
+							"font": "Arial;15;0",
+							"left": 200,
+							"top": 152,
+							"width": 281,
+							"height": 113,
+							"nameLabel": {
+								"$ref": "AAAAAAFytxJnJAAqbA8="
+							}
+						},
+						{
+							"_type": "FCFlowView",
+							"_id": "AAAAAAFytxKL0wA+yqg=",
+							"_parent": {
+								"$ref": "AAAAAAFytxI9gAAbQL0="
+							},
+							"model": {
+								"$ref": "AAAAAAFytxKL0gA8Wz4="
+							},
+							"subViews": [
+								{
+									"_type": "EdgeLabelView",
+									"_id": "AAAAAAFytxKL0wA//H4=",
+									"_parent": {
+										"$ref": "AAAAAAFytxKL0wA+yqg="
+									},
+									"model": {
+										"$ref": "AAAAAAFytxKL0gA8Wz4="
+									},
+									"visible": false,
+									"font": "Arial;13;0",
+									"left": 350,
+									"top": 129,
+									"height": 13,
+									"alpha": 1.5707963267948966,
+									"distance": 15,
+									"hostEdge": {
+										"$ref": "AAAAAAFytxKL0wA+yqg="
+									},
+									"edgePosition": 1
+								}
+							],
+							"font": "Arial;13;0",
+							"head": {
+								"$ref": "AAAAAAFytxJnIwApq3M="
+							},
+							"tail": {
+								"$ref": "AAAAAAFytxJa5QAh1is="
+							},
+							"lineStyle": 2,
+							"points": "336:121;336:152",
+							"nameLabel": {
+								"$ref": "AAAAAAFytxKL0wA//H4="
+							}
+						},
+						{
+							"_type": "FCProcessView",
+							"_id": "AAAAAAFytxS52wBbIHk=",
+							"_parent": {
+								"$ref": "AAAAAAFytxI9gAAbQL0="
+							},
+							"model": {
+								"$ref": "AAAAAAFytxS52wBZhPI="
+							},
+							"subViews": [
+								{
+									"_type": "LabelView",
+									"_id": "AAAAAAFytxS52wBcGTo=",
+									"_parent": {
+										"$ref": "AAAAAAFytxS52wBbIHk="
+									},
+									"font": "Arial;15;0",
+									"left": 226,
+									"top": 193,
+									"width": 93,
+									"height": 30,
+									"text": "Eksplorasi Literatur",
+									"wordWrap": true
+								}
+							],
+							"font": "Arial;15;0",
+							"left": 216,
+							"top": 183,
+							"width": 113,
+							"height": 65,
+							"nameLabel": {
+								"$ref": "AAAAAAFytxS52wBcGTo="
+							}
+						},
+						{
+							"_type": "FCProcessView",
+							"_id": "AAAAAAFytxZH0wBzneA=",
+							"_parent": {
+								"$ref": "AAAAAAFytxI9gAAbQL0="
+							},
+							"model": {
+								"$ref": "AAAAAAFytxZH0wBxScg="
+							},
+							"subViews": [
+								{
+									"_type": "LabelView",
+									"_id": "AAAAAAFytxZH1AB0s28=",
+									"_parent": {
+										"$ref": "AAAAAAFytxZH0wBzneA="
+									},
+									"font": "Arial;15;0",
+									"left": 353,
+									"top": 194,
+									"width": 101,
+									"height": 45,
+									"text": "Pengambilan Dataset Langsung",
+									"wordWrap": true
+								}
+							],
+							"font": "Arial;15;0",
+							"left": 343,
+							"top": 184,
+							"width": 121,
+							"height": 65,
+							"nameLabel": {
+								"$ref": "AAAAAAFytxZH1AB0s28="
+							}
+						},
+						{
+							"_type": "FCProcessView",
+							"_id": "AAAAAAFyt1HvwwDM0A4=",
+							"_parent": {
+								"$ref": "AAAAAAFytxI9gAAbQL0="
+							},
+							"model": {
+								"$ref": "AAAAAAFyt1HvwgDK188="
+							},
+							"subViews": [
+								{
+									"_type": "LabelView",
+									"_id": "AAAAAAFyt1HvwwDNR3o=",
+									"_parent": {
+										"$ref": "AAAAAAFyt1HvwwDM0A4="
+									},
+									"font": "Arial;15;0",
+									"left": 290,
+									"top": 306,
+									"width": 103,
+									"height": 45,
+									"text": "Pengembangan Perangkat Lunak",
+									"wordWrap": true
+								}
+							],
+							"font": "Arial;15;0",
+							"left": 280,
+							"top": 296,
+							"width": 123,
+							"height": 65,
+							"nameLabel": {
+								"$ref": "AAAAAAFyt1HvwwDNR3o="
+							}
+						},
+						{
+							"_type": "FCFlowView",
+							"_id": "AAAAAAFyt1JOVQDY5BA=",
+							"_parent": {
+								"$ref": "AAAAAAFytxI9gAAbQL0="
+							},
+							"model": {
+								"$ref": "AAAAAAFyt1JOVADW9RE="
+							},
+							"subViews": [
+								{
+									"_type": "EdgeLabelView",
+									"_id": "AAAAAAFyt1JOVQDZ8nY=",
+									"_parent": {
+										"$ref": "AAAAAAFyt1JOVQDY5BA="
+									},
+									"model": {
+										"$ref": "AAAAAAFyt1JOVADW9RE="
+									},
+									"visible": false,
+									"font": "Arial;13;0",
+									"left": 354,
+									"top": 273,
+									"height": 13,
+									"alpha": 1.5707963267948966,
+									"distance": 15,
+									"hostEdge": {
+										"$ref": "AAAAAAFyt1JOVQDY5BA="
+									},
+									"edgePosition": 1
+								}
+							],
+							"font": "Arial;13;0",
+							"head": {
+								"$ref": "AAAAAAFyt1HvwwDM0A4="
+							},
+							"tail": {
+								"$ref": "AAAAAAFytxJnIwApq3M="
+							},
+							"lineStyle": 2,
+							"points": "340:264;340:296",
+							"nameLabel": {
+								"$ref": "AAAAAAFyt1JOVQDZ8nY="
+							}
+						},
+						{
+							"_type": "FCProcessView",
+							"_id": "AAAAAAFyt1LJEwDk/2E=",
+							"_parent": {
+								"$ref": "AAAAAAFytxI9gAAbQL0="
+							},
+							"model": {
+								"$ref": "AAAAAAFyt1LJEwDiNQY="
+							},
+							"subViews": [
+								{
+									"_type": "LabelView",
+									"_id": "AAAAAAFyt1LJEwDlMYY=",
+									"_parent": {
+										"$ref": "AAAAAAFyt1LJEwDk/2E="
+									},
+									"font": "Arial;15;0",
+									"left": 290,
+									"top": 402,
+									"width": 101,
+									"height": 45,
+									"text": "Hasil dan Analisis Penelitian",
+									"wordWrap": true
+								}
+							],
+							"font": "Arial;15;0",
+							"left": 280,
+							"top": 392,
+							"width": 121,
+							"height": 65,
+							"nameLabel": {
+								"$ref": "AAAAAAFyt1LJEwDlMYY="
+							}
+						},
+						{
+							"_type": "FCFlowView",
+							"_id": "AAAAAAFyt1NBZQDxU98=",
+							"_parent": {
+								"$ref": "AAAAAAFytxI9gAAbQL0="
+							},
+							"model": {
+								"$ref": "AAAAAAFyt1NBZQDvL58="
+							},
+							"subViews": [
+								{
+									"_type": "EdgeLabelView",
+									"_id": "AAAAAAFyt1NBZQDyb4k=",
+									"_parent": {
+										"$ref": "AAAAAAFyt1NBZQDxU98="
+									},
+									"model": {
+										"$ref": "AAAAAAFyt1NBZQDvL58="
+									},
+									"visible": false,
+									"font": "Arial;13;0",
+									"left": 355,
+									"top": 369,
+									"height": 13,
+									"alpha": 1.5707963267948966,
+									"distance": 15,
+									"hostEdge": {
+										"$ref": "AAAAAAFyt1NBZQDxU98="
+									},
+									"edgePosition": 1
+								}
+							],
+							"font": "Arial;13;0",
+							"head": {
+								"$ref": "AAAAAAFyt1LJEwDk/2E="
+							},
+							"tail": {
+								"$ref": "AAAAAAFyt1HvwwDM0A4="
+							},
+							"lineStyle": 2,
+							"points": "341:360;341:392",
+							"nameLabel": {
+								"$ref": "AAAAAAFyt1NBZQDyb4k="
+							}
+						}
+					]
+				},
+				{
+					"_type": "FCProcess",
+					"_id": "AAAAAAFytxJa5AAffsU=",
+					"_parent": {
+						"$ref": "AAAAAAFytxI9gAAawbs="
+					},
+					"name": "Studi Literature",
+					"ownedElements": [
+						{
+							"_type": "FCFlow",
+							"_id": "AAAAAAFytxKL0gA8Wz4=",
+							"_parent": {
+								"$ref": "AAAAAAFytxJa5AAffsU="
+							},
+							"source": {
+								"$ref": "AAAAAAFytxJa5AAffsU="
+							},
+							"target": {
+								"$ref": "AAAAAAFytxJnIwAnR2s="
+							}
+						}
+					]
+				},
+				{
+					"_type": "FCProcess",
+					"_id": "AAAAAAFytxJnIwAnR2s=",
+					"_parent": {
+						"$ref": "AAAAAAFytxI9gAAawbs="
+					},
+					"name": "Pengumpulan Data",
+					"ownedElements": [
+						{
+							"_type": "FCFlow",
+							"_id": "AAAAAAFyt1JOVADW9RE=",
+							"_parent": {
+								"$ref": "AAAAAAFytxJnIwAnR2s="
+							},
+							"source": {
+								"$ref": "AAAAAAFytxJnIwAnR2s="
+							},
+							"target": {
+								"$ref": "AAAAAAFyt1HvwgDK188="
+							}
+						}
+					]
+				},
+				{
+					"_type": "FCProcess",
+					"_id": "AAAAAAFytxS52wBZhPI=",
+					"_parent": {
+						"$ref": "AAAAAAFytxI9gAAawbs="
+					},
+					"name": "Eksplorasi Literatur"
+				},
+				{
+					"_type": "FCProcess",
+					"_id": "AAAAAAFytxZH0wBxScg=",
+					"_parent": {
+						"$ref": "AAAAAAFytxI9gAAawbs="
+					},
+					"name": "Pengambilan Dataset Langsung"
+				},
+				{
+					"_type": "FCProcess",
+					"_id": "AAAAAAFyt1HvwgDK188=",
+					"_parent": {
+						"$ref": "AAAAAAFytxI9gAAawbs="
+					},
+					"name": "Pengembangan Perangkat Lunak",
+					"ownedElements": [
+						{
+							"_type": "FCFlow",
+							"_id": "AAAAAAFyt1NBZQDvL58=",
+							"_parent": {
+								"$ref": "AAAAAAFyt1HvwgDK188="
+							},
+							"source": {
+								"$ref": "AAAAAAFyt1HvwgDK188="
+							},
+							"target": {
+								"$ref": "AAAAAAFyt1LJEwDiNQY="
+							}
+						}
+					]
+				},
+				{
+					"_type": "FCProcess",
+					"_id": "AAAAAAFyt1LJEwDiNQY=",
+					"_parent": {
+						"$ref": "AAAAAAFytxI9gAAawbs="
+					},
+					"name": "Hasil dan Analisis Penelitian"
+				}
+			]
+		},
+		{
+			"_type": "FCFlowchart",
+			"_id": "AAAAAAFyvUH2t8S946I=",
+			"_parent": {
+				"$ref": "AAAAAAFF+h6SjaM2Hec="
+			},
+			"name": "Flowchart2",
+			"ownedElements": [
+				{
+					"_type": "FCFlowchartDiagram",
+					"_id": "AAAAAAFyvUH2t8S+J1Y=",
+					"_parent": {
+						"$ref": "AAAAAAFyvUH2t8S946I="
+					},
+					"name": "FlowchartDiagram1"
+				}
+			]
+		}
+	]
+}

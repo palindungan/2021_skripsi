@@ -1,0 +1,25 @@
+assalamualaikum pak aji. mohon ijin dievaluasi bab 1 saya
+catatan : saya sebenarnya lebih tertarik dengan menggunakan motion sensing seperti kamera kinect, tetapi karena sekarang produksinya sudah dihentikan microsoft dan harganya cukup mahal serta dengan kondisi sekarang jadi saya sekarang masih tetap memakai prisip lebih dari 1 kamera input(sisi depan dan sisi samping)
+ada beberapa kendala yang dialami :
+1. ada banyak faktor pengganggu seperti kecerahan ruangan / sumber cahaya, warna kulit maupun warna objek yang mirip dengan kulit menjadi pengganggu sehingga tidak dinamis pada kondisi lingkungan user (harus disetting sebelum bisa digunakan deteksi)
+2. jika menggunakan bantuan glove dengan warna tertentu untuk mengurangi noise mungkin bisa, tetapi akan mengurangi fungsionalitas dan estetika
+3. jika tanpa menggunakan glove tetapi menggunakan plugin / library open source mungkin bisa tetapi akan menambah jumlah komputasi
+
+
+-----------------
+
+
+catatan : saya mengubah input device dari yang semula menggunakan 3 / multi camera sebagai inputan citra menjadi menggunakan sebuah kamera microsoft kinect. 
+
+- ketika menggunakan kamera RGB biasa :
+	1. data gambar pada setiap pixel hanya berisi value RGB (2D).
+	2. citra yang ditangkap oleh camera harus melewati berbagai proses pengolahan yang panjang sempai menemukan objek yang dibutuhkan (butuh komputasi yang berat) apalagi dari 3 kamera sekaligus.
+	3. ada banyak faktor pengganggu seperti kecerahan ruangan / sumber cahaya, warna kulit maupun warna objek yang mirip dengan kulit menjadi pengganggu, banyaknya noise pada gambar sehingga tidak dinamis pada kondisi lingkungan user
+	4. ketika menggunakan AI untuk deteksi warna kulit maka hasil akan tidak realtime karena proses AI kita akan menunggu AI yang lain / sebelumnya
+	5. jika menggunakan glove dengan warna khusus untuk objek detection akan membuat user lebih repot.
+
+- ketika menggunakan kamera kinect :
+	1. data gambar pada setiap pixel berisi value RGB dan jarak kamera ke objek (sehingga membuat data 3D).
+	2. ada banyak library realtime body tracking dan motion capture yang open source, dan bisa terintegrasi ke editor 3d animation.
+	3. data yang diproses dalam bentuk 3d objek sehingga lebih akurat
+	4. user tidak perlu repot memakai glove / alat bantu lain
