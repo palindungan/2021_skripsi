@@ -18,10 +18,10 @@ imgCropResized = cv2.resize(imgCropped, (imgResize.shape[1], imgResize.shape[0])
 print(imgCropResized.shape)  # : (400, 200, 3) -> (y,x,channel)
 
 # show image in window
-cv2.imshow("Img Lena", img)
+# cv2.imshow("Img Lena", img)
 cv2.imshow("Img Resize", imgResize)
-cv2.imshow("Img Cropped", imgCropped)
-cv2.imshow("Img Cropped Resized", imgCropResized)
+# cv2.imshow("Img Cropped", imgCropped)
+# cv2.imshow("Img Cropped Resized", imgCropResized)
 
 # delay
 cv2.waitKey(0)
