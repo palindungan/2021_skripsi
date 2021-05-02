@@ -14,8 +14,8 @@ cap.set(4, frameHeight)
 
 # init window + trackbar
 winName = "Parameters"
-trackNameTH1 = "Threshold 1"
-trackNameTH2 = "Threshold 2"
+trackNameTH1 = "TH 1"
+trackNameTH2 = "TH 2"
 
 # init parameters window trackbar
 frameHeightHalf = int(frameHeight / 2)
@@ -27,6 +27,9 @@ cv2.createTrackbar(trackNameTH2, winName, 255, 255, BaseFunction.empty)
 while True:
     # read image
     _, img = cap.read()
+
+    # copy image
+    imgContour = img.copy()
 
     # blur image
     kernelSize = (7, 7)
@@ -40,10 +43,18 @@ while True:
     threshold2 = cv2.getTrackbarPos(trackNameTH2, winName)
     imgCanny = cv2.Canny(imgGrey, threshold1, threshold2)
 
-    imgBlank = np.zeros((img.shape[0], img.shape[1]), np.uint8)
+    # dilated image
+    kernel = np.ones((5, 5), np.uint8)  # create kernel -> matrix / image
+    iteration = 1
+    imgDilated = cv2.dilate(imgCanny, kernel, iterations=iteration)
 
+    BaseFunction.getContours(imgDilated, imgContour)  # draw contours image
+
+    imgBlank = np.zeros((img.shape[0], img.shape[1]), np.uint8)  # create blank image
+
+    # stacked images
     imgStacked = BaseFunction.stackImages(0.5, (
-        [img, imgBlurred, imgGrey], [imgCanny, imgBlank, imgBlank]))  # stacked images
+        [img, imgBlurred, imgGrey], [imgCanny, imgDilated, imgContour]))
 
     # show image
     cv2.imshow("Image Processing", imgStacked)
