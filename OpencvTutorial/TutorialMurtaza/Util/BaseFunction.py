@@ -39,3 +39,6 @@ def stackImages(scale, imgArray):
 
 def getBaseUrl():
     return sys.path[1]
+
+def empty(a):
+    pass
