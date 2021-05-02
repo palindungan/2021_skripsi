@@ -7,7 +7,10 @@ path2 = "Resources/lena.jpg"
 img1 = cv2.imread(path1)
 img2 = cv2.imread(path2, 0)
 
-# resize image to x0.5
+print(img1.shape)
+print(img2.shape)
+
+# scaling image to x0.5
 size = (0, 0)
 fx = 0.5
 fy = 0.5
