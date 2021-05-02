@@ -16,6 +16,7 @@ cap.set(4, frameHeight)
 winName = "Parameters"
 trackNameTH1 = "TH 1"
 trackNameTH2 = "TH 2"
+trackNameArea = "Min Area"
 
 # init parameters window trackbar
 frameHeightHalf = int(frameHeight / 2)
@@ -23,6 +24,7 @@ cv2.namedWindow(winName)
 cv2.resizeWindow(winName, (frameWidth, frameHeightHalf))
 cv2.createTrackbar(trackNameTH1, winName, 150, 255, BaseFunction.empty)
 cv2.createTrackbar(trackNameTH2, winName, 255, 255, BaseFunction.empty)
+cv2.createTrackbar(trackNameArea, winName, 1000, 30000, BaseFunction.empty)
 
 while True:
     # read image
@@ -48,7 +50,8 @@ while True:
     iteration = 1
     imgDilated = cv2.dilate(imgCanny, kernel, iterations=iteration)
 
-    BaseFunction.getContours(imgDilated, imgContour)  # draw contours image
+    trackArea = cv2.getTrackbarPos(trackNameArea, winName)
+    BaseFunction.getContours(imgDilated, imgContour, trackArea)  # draw contours image
 
     imgBlank = np.zeros((img.shape[0], img.shape[1]), np.uint8)  # create blank image
 
