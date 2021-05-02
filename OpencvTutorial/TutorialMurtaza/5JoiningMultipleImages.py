@@ -36,10 +36,6 @@ def stackImages(scale, imgArray):
     return ver
 
 
-# start of import library
-import cv2
-import numpy as np
-
 # read image
 img = cv2.imread("Resources/lena.jpg")
 
