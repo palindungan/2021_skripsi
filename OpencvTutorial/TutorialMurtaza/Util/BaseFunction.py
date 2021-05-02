@@ -1,6 +1,7 @@
 # start of import library
 import cv2
 import numpy as np
+import sys
 
 
 def stackImages(scale, imgArray):
@@ -34,3 +35,7 @@ def stackImages(scale, imgArray):
         hor = np.hstack(imgArray)
         ver = hor
     return ver
+
+
+def getBaseUrl():
+    return sys.path[1]
