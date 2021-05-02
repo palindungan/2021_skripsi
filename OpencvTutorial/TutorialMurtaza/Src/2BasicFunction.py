@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 
 # read image
-img = cv2.imread("Resources/lena.jpg")
+img = cv2.imread("../Resources/lena.jpg")
 
 # convert color img from BGR to GRAY
 imgGrey = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)

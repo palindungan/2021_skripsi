@@ -2,7 +2,7 @@
 import cv2
 
 # read image
-path = "Resources/lena.jpg"
+path = "../Resources/lena.jpg"
 img = cv2.imread(path)
 print(img.shape)  # : (512, 512, 3) -> (y,x,channel)
 

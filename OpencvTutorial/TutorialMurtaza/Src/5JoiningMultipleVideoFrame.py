@@ -1,7 +1,7 @@
 # start of import library
 import cv2
 import numpy as np
-import BaseFunction
+from TutorialMurtaza.Util import BaseFunction
 
 # declaration
 frameWidth = 640
