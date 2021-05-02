@@ -49,4 +49,9 @@ def getContours(img, imgContour):
     color = (0, 0, 255)
     thickness = 7
     contours, hierarchy = cv2.findContours(img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
-    cv2.drawContours(imgContour, contours, -1, color, thickness)
+
+    # draw contours
+    for contour in contours:
+        area = cv2.contourArea(contour)  # get area contour
+        if area >= 1000:
+            cv2.drawContours(imgContour, contour, -1, color, thickness)  # draw contour
