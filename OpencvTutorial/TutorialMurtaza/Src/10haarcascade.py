@@ -1,16 +1,14 @@
 import cv2
-import numpy as np
 from TutorialMurtaza.Util import BaseFunction
-import os
 
-################### Declaration ############
-path = BaseFunction.getBaseUrl() + '/TutorialMurtaza/Resources/opencv/data/haarcascades/haarcascade_frontalface_default.xml'
+###############################
+path = BaseFunction.getBaseUrl() + '/TutorialMurtaza/Resources/haar/classifier/cascade.xml'
 cameraNo = 1
-objectName = 'FACE'
+objectName = 'Spoon'
 frameWidth = 640
 frameHeight = 480
 color = (255, 0, 255)
-############################################
+#################################
 
 # Camera Parameter
 cap = cv2.VideoCapture(cameraNo)
