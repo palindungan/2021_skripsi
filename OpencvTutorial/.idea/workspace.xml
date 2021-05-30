@@ -28,6 +28,11 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\2021_skripsi\OpencvTutorial\TutorialMurtaza\Resources" />
+    </key>
+  </component>
   <component name="RunManager" selected="Python.OCR_CNN_Training">
     <configuration name="1ReadImage" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="OpencvTutorial" />
