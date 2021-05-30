@@ -20,10 +20,10 @@ from keras.layers.convolutional import Conv2D, MaxPooling2D
 path = BaseFunction.getBaseUrl() + '/TutorialMurtaza/Resources/MyData/'
 pathLabels = ''
 testRatio = 0.2
-valRation = 0.2
+valRatio = 0.2
 imageDimensions = (32, 32, 3)
 
-batchSizedVal = 50
+batchSizeVal = 50
 epochsVal = 1
 stepsPerEpochVal = 2000
 
@@ -82,7 +82,7 @@ print('Split Ratio = ' + str(testRatio))  # ration
 # print('Y Test = ' + str(y_test.shape))  # classes
 
 # splitting data training and validation
-X_train, X_validation, y_train, y_validation = train_test_split(X_train, y_train, test_size=valRation)
+X_train, X_validation, y_train, y_validation = train_test_split(X_train, y_train, test_size=valRatio)
 
 print('X Training = ' + str(X_train.shape))  # images
 print('Y Training = ' + str(y_train.shape))  # classes
@@ -178,11 +178,15 @@ y_validation = to_categorical(y_validation, noOfClasses)
 # after hot encode
 print(y_train[0])
 
-
 ##########################
 # Create the Model and Training
 # start
 ##########################
+
+batchSizeVal = 50
+epochsVal = 10
+stepsPerEpochVal = len(X_train) // batchSizeVal
+
 
 def myModel():
     noOfFilters = 60
@@ -214,7 +218,7 @@ model = myModel()
 print(model.summary())
 
 history = model.fit(
-    dataGen.flow(X_train, y_train, batch_size=batchSizedVal),
+    dataGen.flow(X_train, y_train, batch_size=batchSizeVal),
     steps_per_epoch=stepsPerEpochVal,
     epochs=epochsVal,
     validation_data=(X_validation, y_validation),
