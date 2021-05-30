@@ -8,11 +8,18 @@ from TutorialMurtaza.Util import BaseFunction
 from keras.preprocessing.image import ImageDataGenerator
 from keras.utils.np_utils import to_categorical
 
+from keras.models import Sequential
+from keras.layers import Dense, Dropout, Flatten
+from keras.optimizers import Adam
+from keras.layers.convolutional import Conv2D, MaxPooling2D
+
 ##########################
 # SETTING
 path = BaseFunction.getBaseUrl() + '/TutorialMurtaza/Resources/MyData/'
+pathLabels = ''
 testRatio = 0.2
 valRation = 0.2
+imageDimensions = (32, 32, 3)
 
 ##########################
 # import dataset 0-9, create one row images array and labels array
@@ -36,7 +43,8 @@ for x in range(0, noOfClasses):
     # for in each file on folder img001-00001 ... img001-01016 --> img010-01016
     for y in myPicList:
         curImg = cv2.imread(path + '/' + str(x) + '/' + y)  # read each file image
-        curImg = cv2.resize(curImg, (32, 32))  # resize image to decrease computation cost
+        curImg = cv2.resize(curImg,
+                            (imageDimensions[0], imageDimensions[1]))  # resize image to decrease computation cost
         images.append(curImg)  # add image matrix in list
         classNo.append(x)  # add class in List
         # print(images)
@@ -150,7 +158,7 @@ dataGen = ImageDataGenerator(width_shift_range=0.1,
 dataGen.fit(X_train)
 
 ##########################
-# Hot encode (one_hot_encode)
+# One Hot Encode (one_hot_encode)
 # start
 ##########################
 
@@ -163,3 +171,51 @@ y_validation = to_categorical(y_validation, noOfClasses)
 
 # after hot encode
 print(y_train[0])
+
+
+##########################
+# Create the Model and Training
+# start
+##########################
+
+def myModel():
+    noOfFilters = 60
+    sizeOfFilter1 = (5, 5)
+    sizeOfFilter2 = (3, 3)
+    sizeOfPool = (2, 2)
+    noOfNode = 500
+
+    model = Sequential()
+    model.add((Conv2D(noOfFilters, sizeOfFilter1, input_shape=(imageDimensions[0], imageDimensions[1], 1),
+                      activation='relu')))
+    model.add((Conv2D(noOfFilters, sizeOfFilter1, activation='relu')))
+    model.add(MaxPooling2D(pool_size=sizeOfPool))
+    model.add((Conv2D(noOfFilters // 2, sizeOfFilter2, activation='relu')))
+    model.add((Conv2D(noOfFilters // 2, sizeOfFilter2, activation='relu')))
+    model.add(MaxPooling2D(pool_size=sizeOfPool))
+    model.add(Dropout(0.5))
+
+    model.add(Flatten())
+    model.add(Dense(noOfNode, activation='relu'))
+    model.add(Dropout(0.5))
+    model.add(Dense(noOfClasses, activation='softmax'))
+    model.compile(Adam(lr=0.001), loss='categorical_crossentropy', metrics=['accuracy'])
+
+    return model
+
+
+model = myModel()
+print(model.summary())
+
+batchSizedVal = 50
+epochsVal = 10
+stepsPerEpochVal = 2000
+
+history = model.fit_generator(
+    dataGen.flow(X_train, y_train, batch_size=batchSizedVal),
+    steps_per_epoch=stepsPerEpochVal,
+    epochs=epochsVal,
+    validation_data=(X_validation, y_validation),
+    shuffle=1
+)
+
