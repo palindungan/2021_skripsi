@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 
 from sklearn.model_selection import train_test_split
 from TutorialMurtaza.Util import BaseFunction
+from keras.preprocessing.image import ImageDataGenerator
+from keras.utils.np_utils import to_categorical
 
 ##########################
 # SETTING
@@ -135,4 +137,29 @@ print('after reshape = ' + str(X_train.shape))
 # start
 ##########################
 
+# preparation for generate data
+# defines the configuration for image data preparation and augmentation
+dataGen = ImageDataGenerator(width_shift_range=0.1,
+                             height_shift_range=0.1,
+                             zoom_range=0.2,
+                             shear_range=0.1,
+                             rotation_range=10)
 
+# This will calculate any statistics required to actually perform the transforms to your image data.
+# help generator to calculate some statistic before perform transformation
+dataGen.fit(X_train)
+
+##########################
+# Hot encode (one_hot_encode)
+# start
+##########################
+
+# before hot encode
+print(y_train[0])
+
+y_train = to_categorical(y_train, noOfClasses)
+y_test = to_categorical(y_test, noOfClasses)
+y_validation = to_categorical(y_validation, noOfClasses)
+
+# after hot encode
+print(y_train[0])
