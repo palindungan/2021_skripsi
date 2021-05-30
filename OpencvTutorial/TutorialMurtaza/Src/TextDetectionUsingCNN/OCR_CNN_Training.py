@@ -3,6 +3,8 @@ import numpy as np
 import os
 import matplotlib.pyplot as plt
 
+import pickle
+
 from sklearn.model_selection import train_test_split
 from TutorialMurtaza.Util import BaseFunction
 from keras.preprocessing.image import ImageDataGenerator
@@ -20,6 +22,10 @@ pathLabels = ''
 testRatio = 0.2
 valRation = 0.2
 imageDimensions = (32, 32, 3)
+
+batchSizedVal = 50
+epochsVal = 1
+stepsPerEpochVal = 2000
 
 ##########################
 # import dataset 0-9, create one row images array and labels array
@@ -199,7 +205,7 @@ def myModel():
     model.add(Dense(noOfNode, activation='relu'))
     model.add(Dropout(0.5))
     model.add(Dense(noOfClasses, activation='softmax'))
-    model.compile(Adam(lr=0.001), loss='categorical_crossentropy', metrics=['accuracy'])
+    model.compile(Adam(learning_rate=0.001), loss='categorical_crossentropy', metrics=['accuracy'])
 
     return model
 
@@ -207,11 +213,7 @@ def myModel():
 model = myModel()
 print(model.summary())
 
-batchSizedVal = 50
-epochsVal = 10
-stepsPerEpochVal = 2000
-
-history = model.fit_generator(
+history = model.fit(
     dataGen.flow(X_train, y_train, batch_size=batchSizedVal),
     steps_per_epoch=stepsPerEpochVal,
     epochs=epochsVal,
@@ -219,3 +221,26 @@ history = model.fit_generator(
     shuffle=1
 )
 
+plt.figure(1)
+plt.plot(history.history['loss'])
+plt.plot(history.history['val_loss'])
+plt.legend(['training', ' validation'])
+plt.title('Loss')
+plt.xlabel('epoch')
+
+plt.figure(2)
+plt.plot(history.history['accuracy'])
+plt.plot(history.history['val_accuracy'])
+plt.legend(['training', ' validation'])
+plt.title('Accuracy')
+plt.xlabel('epoch')
+
+plt.show()
+
+score = model.evaluate(X_test, y_test, verbose=0)
+print('Test Score = ', str(score[0]))
+print('Test Accuracy = ', str(score[1]))
+
+pickle_out = open('model_trained.p', 'wb')
+pickle.dump(model, pickle_out)
+pickle_out.close()
