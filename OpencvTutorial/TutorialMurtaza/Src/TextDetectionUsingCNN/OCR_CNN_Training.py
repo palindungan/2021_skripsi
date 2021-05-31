@@ -245,6 +245,6 @@ score = model.evaluate(X_test, y_test, verbose=0)
 print('Test Score = ', str(score[0]))
 print('Test Accuracy = ', str(score[1]))
 
-pickle_out = open('../../Resources/model_trained.p', 'wb')
+pickle_out = open(BaseFunction.getBaseUrl() + '/TutorialMurtaza/Resources/model_trained.p', 'wb')
 pickle.dump(model, pickle_out)
 pickle_out.close()
