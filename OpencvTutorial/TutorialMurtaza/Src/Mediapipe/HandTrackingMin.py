@@ -5,7 +5,8 @@ import time
 cap = cv2.VideoCapture(0)
 
 mpHands = mp.solutions.hands  # declaration before using mediapipe
-hands = mpHands.Hands()  # module for hand tracking and detection
+hands = mpHands.Hands(min_detection_confidence=0.8,
+                      min_tracking_confidence=0.8)  # module for hand tracking and detection
 mpDraw = mp.solutions.drawing_utils  # module for drawing landmark connection
 
 # time to count fps
@@ -25,8 +26,12 @@ while True:
         for handLms in results.multi_hand_landmarks:
             # detect index ,position (ratio) landmark  in image
             for id, lm in enumerate(handLms.landmark):
-                
-                print(id, lm)
+                # print(id, lm)
+                h, w, c = img.shape
+                cx, cy = int(lm.x * w), int(lm.y * h)
+                print(id, cx, cy)
+                if id == 0:
+                    cv2.circle(img, (cx, cy), 25, (255, 0, 255), cv2.FILLED)
 
             # drawing connection landmark
             mpDraw.draw_landmarks(img, handLms, mpHands.HAND_CONNECTIONS)
