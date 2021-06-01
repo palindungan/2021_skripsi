@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8324446b-5a69-47c3-8c6b-aaf1c0f1b2e8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/TutorialMurtaza/Src/TextDetectionUsingCNN/OCR_CNN_Test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TutorialMurtaza/Src/TextDetectionUsingCNN/OCR_CNN_Training.py" beforeDir="false" afterPath="$PROJECT_DIR$/TutorialMurtaza/Src/TextDetectionUsingCNN/OCR_CNN_Training.py" afterDir="false" />
-    </list>
+    <list default="true" id="8324446b-5a69-47c3-8c6b-aaf1c0f1b2e8" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
