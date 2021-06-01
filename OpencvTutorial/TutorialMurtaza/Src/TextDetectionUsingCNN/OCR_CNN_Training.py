@@ -184,7 +184,7 @@ print(y_train[0])
 ##########################
 
 batchSizeVal = 50
-epochsVal = 10
+epochsVal = 20
 stepsPerEpochVal = len(X_train) // batchSizeVal
 
 
@@ -245,6 +245,8 @@ score = model.evaluate(X_test, y_test, verbose=0)
 print('Test Score = ', str(score[0]))
 print('Test Accuracy = ', str(score[1]))
 
-pickle_out = open(BaseFunction.getBaseUrl() + '/TutorialMurtaza/Resources/model_trained.p', 'wb')
-pickle.dump(model, pickle_out)
-pickle_out.close()
+# pickle_out = open(BaseFunction.getBaseUrl() + '/TutorialMurtaza/Resources/model_trained.p', 'wb')
+# pickle.dump(model, pickle_out)
+# pickle_out.close()
+
+model.save(BaseFunction.getBaseUrl() + '/TutorialMurtaza/Resources/model_trained.h5')
