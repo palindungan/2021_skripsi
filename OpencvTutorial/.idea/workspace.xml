@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8324446b-5a69-47c3-8c6b-aaf1c0f1b2e8" name="Default Changelist" comment="" />
+    <list default="true" id="8324446b-5a69-47c3-8c6b-aaf1c0f1b2e8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/TutorialMurtaza/Src/Mediapipe/HandTrackingMin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TutorialMurtaza/Src/Mediapipe/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,7 +37,7 @@
       <recent name="C:\xampp\htdocs\2021_skripsi\OpencvTutorial\TutorialMurtaza\Resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.OCR_CNN_Test">
+  <component name="RunManager" selected="Python.HandTrackingMin">
     <configuration name="1ReadImage" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="OpencvTutorial" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -47,6 +51,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TutorialMurtaza/Src/1ReadImage.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="HandTrackingMin" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="OpencvTutorial" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TutorialMurtaza/Src/Mediapipe" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TutorialMurtaza/Src/Mediapipe/HandTrackingMin.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -120,6 +145,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.HandTrackingMin" />
         <item itemvalue="Python.OCR_CNN_Test" />
         <item itemvalue="Python.OCR_CNN_Training" />
         <item itemvalue="Python.1ReadImage" />
