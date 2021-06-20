@@ -23,11 +23,20 @@ for imPath in myList:
 
 print(len(overlayList))
 
+pTime = 0
+
 while True:
     success, img = cap.read()
 
+    h, w, c = overlayList[0].shape
     # img[0:y, 0:x] img[height, width] image size is 200
-    img[0:200, 0:200] = overlayList[0]
+    img[0:h, 0:w] = overlayList[0]
+
+    cTime = time.time()
+    fps = 1 / (cTime - pTime)
+    pTime = cTime
+
+    cv2.putText(img, f'FPS : {int(fps)}', (400, 70), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 0), 3)
 
     cv2.imshow('Image', img)
 
