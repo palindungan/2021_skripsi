@@ -8,18 +8,21 @@ from ctypes import cast, POINTER
 from comtypes import CLSCTX_ALL
 from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
 
+# Setting
 ##########################
-wCam, hCam = 1080, 720
+wCam, hCam = 1080, 720  # width and height
 ##########################
 
+# Cam Capture
 cap = cv2.VideoCapture(0)
 cap.set(3, wCam)
 cap.set(4, hCam)
 
-pTime = 0
+pTime = 0  # previous time -> for fps
 
-detector = htm.HandDetector()
+detector = htm.HandDetector()  # import hand tracking module
 
+# Start of sound speaker API
 devices = AudioUtilities.GetSpeakers()
 interface = devices.Activate(IAudioEndpointVolume._iid_, CLSCTX_ALL, None)
 volume = cast(interface, POINTER(IAudioEndpointVolume))
@@ -31,15 +34,26 @@ maxVol = volRange[1]
 vol = 0
 volumeBar = 400
 volPer = 0
-# print(volRange)
+print(volRange)
+# End of sound speaker API
 
 while True:
     success, img = cap.read()
+
+    # Find hand
     img = detector.findHands(img)
     lmList = detector.findPosition(img, draw=False)
 
     if len(lmList) != 0:
         # print(lmList[4], lmList[8])
+
+        # Filter Based on size / Normalization (500px)
+
+        # Find Distance between index and Thumb
+
+        # Convert Volume
+        # Reduce Resolution to make it smoother / not change when detect very small distance
+        # check finger up
 
         x1, y1 = lmList[4][1], lmList[4][2]
         x2, y2 = lmList[8][1], lmList[8][2]
