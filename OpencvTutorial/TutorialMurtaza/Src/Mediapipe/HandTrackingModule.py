@@ -14,6 +14,7 @@ class HandDetector():
         self.hands = self.mpHands.Hands(self.mode, self.maxHands, self.detectionCon,
                                         self.trackCon)  # module for hand tracking and detection
         self.mpDraw = mp.solutions.drawing_utils  # module for drawing landmark connection
+        self.tipIds = [4, 8, 12, 16, 20]
 
     def findHands(self, img, draw=True):
         imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  # convert BGR -> RGB
@@ -35,7 +36,7 @@ class HandDetector():
     def findPosition(self, img, handNo=0, draw=True):
 
         # declaration
-        lmList = []
+        self.lmList = []
 
         # detect if there is hand or not
         if self.results.multi_hand_landmarks:
@@ -47,14 +48,34 @@ class HandDetector():
                 h, w, c = img.shape
                 cx, cy = int(lm.x * w), int(lm.y * h)
                 # print(id, cx, cy)
-                lmList.append([id, cx, cy])
+                self.lmList.append([id, cx, cy])
                 # if id == 0:
                 #     cv2.circle(img, (cx, cy), 15, (255, 0, 255), cv2.FILLED)
 
                 if draw:
                     cv2.circle(img, (cx, cy), 15, (255, 0, 255), cv2.FILLED)
 
-        return lmList
+        return self.lmList
+
+    def fingersUp(self):
+        fingers = []
+
+        # thumb
+        if self.lmList[self.tipIds[0]][1] < self.lmList[self.tipIds[0] - 1][1]:
+            # print('Index Finger Open')
+            fingers.append(1)
+        else:
+            fingers.append(0)
+
+        # 4 other fingers
+        for id in range(1, 5):
+            if self.lmList[self.tipIds[id]][2] < self.lmList[self.tipIds[id] - 2][2]:
+                # print('Index Finger Open')
+                fingers.append(1)
+            else:
+                fingers.append(0)
+
+        return fingers
 
 
 def main():

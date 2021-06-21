@@ -1,0 +1,81 @@
+import cv2
+import numpy as np
+import time
+import os
+from TutorialMurtaza.Util import BaseFunction
+import HandTrackingModule as htm
+
+################
+wCam, hCam = 1280, 720
+################
+
+folderPath = BaseFunction.getBaseUrl() + '/TutorialMurtaza/Resources/Header'
+myList = os.listdir(folderPath)
+print(myList)
+overlayList = []
+
+for imPath in myList:
+    image = cv2.imread(f'{folderPath}/{imPath}')
+    overlayList.append(image)
+# print(len(overlayList))
+
+header = overlayList[0]
+drawColor = (255, 0, 255)
+
+cap = cv2.VideoCapture(0)
+cap.set(3, wCam)
+cap.set(4, hCam)
+
+detector = htm.HandDetector(detectionCon=0.85)
+
+while True:
+    # 1. import the image
+    success, img = cap.read()
+    img = cv2.flip(img, 1)  # flip the image
+
+    # 2. find hand landmarks
+    img = detector.findHands(img)
+    lmList = detector.findPosition(img, draw=False)
+
+    if len(lmList) != 0:
+        # print(lmList)
+
+        # tip of index and middle finger
+        x1, y1 = lmList[8][1:]
+        x2, y2 = lmList[12][1:]
+
+        # 3. check with fingers are up
+        fingers = detector.fingersUp()
+        # print(fingers)
+
+        # 4. If selection mode - two finger are up
+        if fingers[1] and fingers[2]:
+            print('Selection Mode')
+
+            # checking the click
+            if y1 < 125:
+                if 250 < x1 < 450:
+                    header = overlayList[0]
+                    drawColor = (255, 0, 255)
+                elif 550 < x1 < 750:
+                    header = overlayList[1]
+                    drawColor = (255, 0, 0)
+                elif 800 < x1 < 950:
+                    header = overlayList[2]
+                    drawColor = (0, 255, 0)
+                elif 1050 < x1 < 1200:
+                    header = overlayList[3]
+                    drawColor = (0, 0, 0)
+
+            cv2.rectangle(img, (x1, y1 - 25), (x2, y2 + 25), drawColor, cv2.FILLED)
+
+        # 5. if drawing mode - index finger is up
+        if fingers[1] and fingers[2] == False:
+            cv2.circle(img, (x1, y1), 15, drawColor, cv2.FILLED)
+            print('Drawing Mode')
+
+    # Setting the header image
+    img[0:125, 0:1280] = header
+
+    cv2.imshow('Image', img)
+    cv2.waitKey(1)
