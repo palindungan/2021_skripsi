@@ -7,6 +7,8 @@ import HandTrackingModule as htm
 
 ################
 wCam, hCam = 1280, 720
+brushThickness = 15
+eraserThickness = 100
 ################
 
 folderPath = BaseFunction.getBaseUrl() + '/TutorialMurtaza/Resources/Header'
@@ -27,6 +29,10 @@ cap.set(3, wCam)
 cap.set(4, hCam)
 
 detector = htm.HandDetector(detectionCon=0.85)
+
+xp, yp = 0, 0
+
+imgCanvas = np.zeros((720, 1280, 3), np.uint8)
 
 while True:
     # 1. import the image
@@ -50,6 +56,7 @@ while True:
 
         # 4. If selection mode - two finger are up
         if fingers[1] and fingers[2]:
+            xp, yp = 0, 0
             print('Selection Mode')
 
             # checking the click
@@ -74,8 +81,27 @@ while True:
             cv2.circle(img, (x1, y1), 15, drawColor, cv2.FILLED)
             print('Drawing Mode')
 
+            if xp == 0 and yp == 0:
+                xp, yp = x1, y1
+
+            if drawColor == (0, 0, 0):
+                cv2.line(img, (xp, yp), (x1, y1), drawColor, eraserThickness)
+                cv2.line(imgCanvas, (xp, yp), (x1, y1), drawColor, eraserThickness)
+            else:
+                cv2.line(img, (xp, yp), (x1, y1), drawColor, brushThickness)
+                cv2.line(imgCanvas, (xp, yp), (x1, y1), drawColor, brushThickness)
+
+            xp, yp = x1, y1
+
+    imgGray = cv2.cvtColor(imgCanvas, cv2.COLOR_BGR2GRAY)
+    _, imgInv = cv2.threshold(imgGray, 50, 255, cv2.THRESH_BINARY_INV)
+    imgInv = cv2.cvtColor(imgInv, cv2.COLOR_GRAY2BGR)
+    img = cv2.bitwise_and(img, imgInv)
+    img = cv2.bitwise_or(img, imgCanvas)
+
     # Setting the header image
     img[0:125, 0:1280] = header
-
+    # img = cv2.addWeighted(img, 0.5, imgCanvas, 0.5, 0)
     cv2.imshow('Image', img)
+    cv2.imshow('image Canvas', imgCanvas)
     cv2.waitKey(1)
