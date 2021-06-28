@@ -34,52 +34,56 @@ maxVol = volRange[1]
 vol = 0
 volumeBar = 400
 volPer = 0
-print(volRange)
+# print(volRange)
 # End of sound speaker API
+
+area = 0
 
 while True:
     success, img = cap.read()
 
     # Find hand
     img = detector.findHands(img)
-    lmList, bbox = detector.findPosition(img, draw=False)
+    lmList, bbox = detector.findPosition(img, draw=True)
 
     if len(lmList) != 0:
         # print(lmList[4], lmList[8])
 
         # Filter Based on size / Normalization (500px)
+        area = (bbox[2] - bbox[0]) * (bbox[3] - bbox[1]) // 100
+        # print(area)
+        if 250 < area < 1000:
+            print('yes')
+            # Find Distance between index and Thumb
+            # Convert Volume
+            # Reduce Resolution to make it smoother / not change when detect very small distance
+            # Check Finger Up
+            # If pinky is down set volume
+            # Drawings
+            # Frame Rate
 
-        # Find Distance between index and Thumb
+            x1, y1 = lmList[4][1], lmList[4][2]
+            x2, y2 = lmList[8][1], lmList[8][2]
+            cx, cy = (x1 + x2) // 2, (y1 + y2) // 2
 
-        # Convert Volume
-        # Reduce Resolution to make it smoother / not change when detect very small distance
-        # Check Finger Up
-        # If pinky is down set volume
-        # Drawings
-        # Frame Rate
+            cv2.circle(img, (x1, y1), 15, (255, 0, 0), cv2.FILLED)
+            cv2.circle(img, (x2, y2), 15, (255, 0, 0), cv2.FILLED)
+            cv2.line(img, (x1, y1), (x2, y2), (255, 0, 0), 3)
+            cv2.circle(img, (cx, cy), 15, (255, 0, 0), cv2.FILLED)
 
-        x1, y1 = lmList[4][1], lmList[4][2]
-        x2, y2 = lmList[8][1], lmList[8][2]
-        cx, cy = (x1 + x2) // 2, (y1 + y2) // 2
+            length = math.hypot(x2 - x1, y2 - y1)
+            # print(length)
 
-        cv2.circle(img, (x1, y1), 15, (255, 0, 0), cv2.FILLED)
-        cv2.circle(img, (x2, y2), 15, (255, 0, 0), cv2.FILLED)
-        cv2.line(img, (x1, y1), (x2, y2), (255, 0, 0), 3)
-        cv2.circle(img, (cx, cy), 15, (255, 0, 0), cv2.FILLED)
+            # pixel range = 50 - 300
+            # volume range = -65 - 0
+            vol = np.interp(length, [50, 300], [minVol, maxVol])
+            volumeBar = np.interp(length, [50, 300], [400, 150])
+            volPer = np.interp(length, [50, 300], [0, 100])
+            # print(vol)
+            volume.SetMasterVolumeLevel(vol, None)
 
-        length = math.hypot(x2 - x1, y2 - y1)
-        # print(length)
-
-        # pixel range = 50 - 300
-        # volume range = -65 - 0
-        vol = np.interp(length, [50, 300], [minVol, maxVol])
-        volumeBar = np.interp(length, [50, 300], [400, 150])
-        volPer = np.interp(length, [50, 300], [0, 100])
-        print(vol)
-        volume.SetMasterVolumeLevel(vol, None)
-
-        if length < 50:
-            cv2.circle(img, (cx, cy), 15, (0, 255, 0), cv2.FILLED)
+            if length < 50:
+                cv2.circle(img, (cx, cy), 15, (0, 255, 0), cv2.FILLED)
 
     cv2.rectangle(img, (50, 150), (85, 400), (0, 255, 0), 3)
     cv2.rectangle(img, (50, int(volumeBar)), (85, 400), (0, 255, 0), cv2.FILLED)
