@@ -35,6 +35,9 @@ class HandDetector():
 
     def findPosition(self, img, handNo=0, draw=True):
 
+        xList = []
+        yList = []
+
         # declaration
         self.lmList = []
 
@@ -47,6 +50,11 @@ class HandDetector():
                 # print(id, lm)
                 h, w, c = img.shape
                 cx, cy = int(lm.x * w), int(lm.y * h)
+
+                # get all x, y position
+                xList.append(cx)
+                yList.append(cy)
+
                 # print(id, cx, cy)
                 self.lmList.append([id, cx, cy])
                 # if id == 0:
@@ -55,7 +63,13 @@ class HandDetector():
                 if draw:
                     cv2.circle(img, (cx, cy), 15, (255, 0, 255), cv2.FILLED)
 
-        return self.lmList
+            # finc min and max each x y
+            xMin, xMax = min(xList), max(xList)
+            yMin, yMax = min(yList), max(yList)
+
+            bbox = xMin, yMin, xMax, yMax
+
+        return self.lmList, bbox
 
     def fingersUp(self):
         fingers = []

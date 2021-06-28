@@ -53,7 +53,10 @@ while True:
 
         # Convert Volume
         # Reduce Resolution to make it smoother / not change when detect very small distance
-        # check finger up
+        # Check Finger Up
+        # If pinky is down set volume
+        # Drawings
+        # Frame Rate
 
         x1, y1 = lmList[4][1], lmList[4][2]
         x2, y2 = lmList[8][1], lmList[8][2]
