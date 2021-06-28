@@ -80,7 +80,7 @@ class HandDetector():
         fingers = []
 
         # thumb
-        if self.lmList[self.tipIds[0]][1] < self.lmList[self.tipIds[0] - 1][1]:
+        if self.lmList[self.tipIds[0]][1] > self.lmList[self.tipIds[0] - 1][1]:
             # print('Index Finger Open')
             fingers.append(1)
         else:

@@ -20,7 +20,7 @@ cap.set(4, hCam)
 
 pTime = 0  # previous time -> for fps
 
-detector = htm.HandDetector()  # import hand tracking module
+detector = htm.HandDetector(detectionCon=0.7, maxHands=1)  # import hand tracking module
 
 # Start of sound speaker API
 devices = AudioUtilities.GetSpeakers()
@@ -38,6 +38,7 @@ volPer = 0
 # End of sound speaker API
 
 area = 0
+colorVol = (255, 255, 0)
 
 while True:
     success, img = cap.read()
@@ -53,31 +54,41 @@ while True:
         area = (bbox[2] - bbox[0]) * (bbox[3] - bbox[1]) // 100
         # print(area)
         if 250 < area < 1000:
-            print('yes')
+
             # Find Distance between index and Thumb
             length, img, lineInfo = detector.findDistance(4, 8, img)
-            # Convert Volume
-            # Reduce Resolution to make it smoother / not change when detect very small distance
-            # Check Finger Up
-            # If pinky is down set volume
-            # Drawings
-            # Frame Rate
 
+            # Convert Volume
             # pixel range = 50 - 300
             # volume range = -65 - 0
-            vol = np.interp(length, [50, 300], [minVol, maxVol])
             volumeBar = np.interp(length, [50, 300], [400, 150])
             volPer = np.interp(length, [50, 300], [0, 100])
-            # print(vol)
-            volume.SetMasterVolumeLevel(vol, None)
 
-            if length < 50:
+            # Reduce Resolution to make it smoother / not change when detect very small distance
+            smoothness = 10
+            volPer = smoothness * round(volPer / smoothness)
+
+            # Check Finger Up
+            fingers = detector.fingersUp()
+            print(fingers)
+
+            # If pinky is down set volume
+            if not fingers[4]:
+                volume.SetMasterVolumeLevelScalar(volPer / 100, None)
                 cv2.circle(img, (lineInfo[4], lineInfo[5]), 15, (0, 255, 0), cv2.FILLED)
+                colorVol = (0, 255, 0)
+            else:
+                colorVol = (255, 255, 0)
 
+    # Drawings
     cv2.rectangle(img, (50, 150), (85, 400), (0, 255, 0), 3)
     cv2.rectangle(img, (50, int(volumeBar)), (85, 400), (0, 255, 0), cv2.FILLED)
     cv2.putText(img, f'{int(volPer)} %', (40, 450), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 255, 0), 3)
 
+    cVol = int(volume.GetMasterVolumeLevelScalar() * 100)
+    cv2.putText(img, f'Vol Set : {int(cVol)}', (400, 70), cv2.FONT_HERSHEY_COMPLEX, 1, colorVol, 3)
+
+    # Frame Rate
     cTime = time.time()
     fps = 1 / (cTime - pTime)
     pTime = cTime
