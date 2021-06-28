@@ -61,8 +61,8 @@ while True:
             # Convert Volume
             # pixel range = 50 - 300
             # volume range = -65 - 0
-            volumeBar = np.interp(length, [50, 300], [400, 150])
-            volPer = np.interp(length, [50, 300], [0, 100])
+            volumeBar = np.interp(length, [50, 200], [400, 150])
+            volPer = np.interp(length, [50, 200], [0, 100])
 
             # Reduce Resolution to make it smoother / not change when detect very small distance
             smoothness = 10
