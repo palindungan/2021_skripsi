@@ -15,7 +15,7 @@ detector = htm.HandDetector()
 while True:
     success, img = cap.read()  # read the image
     img = detector.findHands(img)
-    lmList = detector.findPosition(img)
+    lmList, bbox = detector.findPosition(img)
 
     if len(lmList) != 0:
         # test

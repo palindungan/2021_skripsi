@@ -23,7 +23,7 @@ while True:
     # 1. Find the hand landmark
     success, img = cap.read()
     img = detector.findHands(img)
-    lmList = detector.findPosition(img)
+    lmList, bbox = detector.findPosition(img)
 
     # 2. Get the tip of the index, and middle finger
 
